@@ -5,10 +5,11 @@ using System;
 namespace Grind
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class FlashColorOnDamage : AOnDamagedBehavior
+    public class FlashColorOnDamaged : MonoBehaviour, IOnDamagedBehavior
     {
         [SerializeField]
         private Color color;
+
 
         [SerializeField]
         private int flashCount = 1;
@@ -16,14 +17,15 @@ namespace Grind
         [SerializeField]
         private float flashInterval;
 
-        public override IEnumerator OnDamaged()
+        public IEnumerator OnDamaged()
         {
-            SpriteRenderer render = gameObject.GetComponent<SpriteRenderer>();
+            SpriteRenderer render = GetComponent<SpriteRenderer>();
             for (int i = 0; i < flashCount; i++)
             {
                 render.color = color;
-                yield return new WaitForSeconds(flashInterval);
+                yield return new WaitForSeconds(flashInterval / 2);
                 render.color = Color.white;
+                yield return new WaitForSeconds(flashInterval / 2);
                 yield return null;
             }
         }

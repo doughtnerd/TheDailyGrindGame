@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Grind
 {
@@ -15,10 +16,14 @@ namespace Grind
         [SerializeField]
         private float iFrames = 1.5f;
 
-        [SerializeField]
-        private AOnDamagedBehavior[] onDamagedBehaviors;
-
         private float nextDamageTime;
+
+        private Animator anim;
+
+        private void Start()
+        {
+            this.anim = GetComponent<Animator>();
+        }
 
         public void Damage(int amount)
         {
@@ -29,14 +34,14 @@ namespace Grind
                     health -= amount;
                     health = health < 0 ? 0 : health;
 
+                    this.anim.SetTrigger("damage");
+
                     nextDamageTime = Time.time + iFrames;
 
-                    if (onDamagedBehaviors != null)
+                    IOnDamagedBehavior[] b = GetComponents<IOnDamagedBehavior>();
+                    for (int i = 0; i < b.Length; i++)
                     {
-                        for (int i = 0; i < onDamagedBehaviors.Length; i++)
-                        {
-                            StartCoroutine(onDamagedBehaviors[i].OnDamaged());
-                        }
+                        StartCoroutine(b[i].OnDamaged());
                     }
 
                     Debug.Log(gameObject.name + "'s health is: " + health);
@@ -45,6 +50,7 @@ namespace Grind
 
             if (health == 0)
             {
+                this.anim.SetTrigger("die");
                 Debug.Log(gameObject.name + " is dead");
             }
         }
