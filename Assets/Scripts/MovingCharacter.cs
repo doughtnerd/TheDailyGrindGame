@@ -16,6 +16,16 @@ namespace Grind
 
         private bool facingRight = true;
 
+        private Vector2 lastDirection = Vector2.zero;
+
+        public Vector2 LastDirection
+        {
+            get
+            {
+                return lastDirection;
+            }
+        }
+
         public float Speed
         {
             get
@@ -30,18 +40,23 @@ namespace Grind
             this.anim = GetComponent<Animator>();
         }
 
-        public void Move(Vector2 direction)
+        public virtual void Move(Vector2 direction)
         {
+            //Normalize direction;
+            direction = direction.normalized;
+
+            lastDirection = direction;
+
             if(direction.x < 0)
             {
                 this.facingRight = false;
-            } else
+            } else if (direction.x > 0)
             {
                 facingRight = true;
             }
 
             anim.SetFloat("horizontal", direction.x);
-            Vector2 velocity = direction.normalized * this.speed * Time.deltaTime;
+            Vector2 velocity = direction * this.speed * Time.deltaTime;
             this.transform.position = new Vector3(this.transform.position.x + velocity.x, this.transform.position.y + velocity.y);
         }
 
