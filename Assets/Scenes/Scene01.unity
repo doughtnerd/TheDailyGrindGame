@@ -622,7 +622,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1487494871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.18, y: -1.31, z: 0}
+  m_LocalPosition: {x: -3.67, y: 4.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -640,6 +640,9 @@ GameObject:
   - component: {fileID: 1770892844}
   - component: {fileID: 1770892847}
   - component: {fileID: 1770892848}
+  - component: {fileID: 1770892850}
+  - component: {fileID: 1770892849}
+  - component: {fileID: 1770892851}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -764,6 +767,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1955109, y: 2.5985034}
   m_EdgeRadius: 0
+--- !u!114 &1770892849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770892843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e55ccd0826225c4b9c25775d8a6d662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorEnabled: 1
+  defaultDirection: {x: 1, y: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  speedMultiplier: 3
+--- !u!114 &1770892850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770892843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc3950469590524e857f6db237fd098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+--- !u!114 &1770892851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770892843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfa25c9e24a89741be28351a80b08b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!1 &1802910853
 GameObject:
   m_ObjectHideFlags: 0

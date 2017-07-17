@@ -16,6 +16,14 @@ namespace Grind
 
         private bool facingRight = true;
 
+        public float Speed
+        {
+            get
+            {
+                return this.speed;
+            }
+        }
+
         private void Start()
         {
             this.rigid = GetComponent<Rigidbody2D>();

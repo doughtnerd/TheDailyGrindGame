@@ -18,6 +18,8 @@ namespace Grind
 
         private float nextDamageTime;
 
+        private bool isDead = false;
+
         private Animator anim;
 
         private void Start()
@@ -48,9 +50,10 @@ namespace Grind
                 }
             }
 
-            if (health == 0)
+            if (health == 0 && !isDead)
             {
                 this.anim.SetTrigger("die");
+                isDead = true;
                 Debug.Log(gameObject.name + " is dead");
             }
         }
