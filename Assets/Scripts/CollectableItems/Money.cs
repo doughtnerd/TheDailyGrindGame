@@ -13,7 +13,7 @@ namespace Grind
         protected override void OnCollect()
         {
             Debug.Log(string.Format("Picked up {0} money", worth));
-            //TODO: Implement state change behavior, etc.
+            StateManager.Instance.AddToFlag("money", worth);
             gameObject.SetActive(false);
         }
     }

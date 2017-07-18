@@ -19,6 +19,9 @@ namespace Grind
         private LayerMask groundLayer;
 
         [SerializeField]
+        private LayerMask bounceLayer;
+
+        [SerializeField]
         private float edgeDetectionDistance = 3f;
 
         [SerializeField]
@@ -60,6 +63,15 @@ namespace Grind
                 {
                     swap = !swap;
                 }
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.gameObject.transform.position - gameObject.transform.position).normalized, 1f, bounceLayer);
+            if(hit)
+            {
+                swap = !swap;
             }
         }
     }
