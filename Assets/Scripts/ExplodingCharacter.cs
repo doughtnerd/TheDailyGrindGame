@@ -17,6 +17,9 @@ namespace Grind
         private float detonationTime = 5f;
 
         [SerializeField]
+        private float blastForce = 20f;
+
+        [SerializeField]
         private LayerMask damageableLayers;
 
         private Animator anim;
@@ -50,6 +53,8 @@ namespace Grind
                 if(d)
                 {
                     d.Damage(damage);
+                    Vector2 pushDirection = coll.gameObject.transform.position - transform.position;
+                    coll.gameObject.GetComponent<Rigidbody2D>().AddForce(pushDirection.normalized * blastForce, ForceMode2D.Impulse);
                 }
             }
         }
