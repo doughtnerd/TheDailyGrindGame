@@ -20,10 +20,9 @@ namespace Grind
         // Update is called once per frame
         void Update()
         {
-            int val = 0;
+            float val = 0;
             StateManager.Instance.TryGetFlag("money", out val);
             text.text = string.Format("Money: ${0}", val.ToString());
-    
         }
     }
 }

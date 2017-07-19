@@ -10,7 +10,7 @@ namespace Grind
     public class StateManager : MonoBehaviour
     {
         [SerializeField]
-        private Dictionary<string, int> flags = new Dictionary<string, int>();
+        private Dictionary<string, float> flags = new Dictionary<string, float>();
 
         private static StateManager instance;
 
@@ -28,7 +28,7 @@ namespace Grind
             }
         }
            
-        public void SetFlag(string key, int value)
+        public void SetFlag(string key, float value)
         {
             if (flags.ContainsKey(key))
             {
@@ -39,19 +39,19 @@ namespace Grind
             }
         }
 
-        public int GetFlag(string key)
+        public float GetFlag(string key)
         {
             return flags[key];
         }
 
-        public bool TryGetFlag(string key, out int value)
+        public bool TryGetFlag(string key, out float value)
         {
             return flags.TryGetValue(key, out value);
         }
 
-        public void AddToFlag(string key, int amount)
+        public void AddToFlag(string key, float amount)
         {
-            int val = 0;
+            float val = 0;
             TryGetFlag(key, out val);
             SetFlag(key, val + amount);
         }

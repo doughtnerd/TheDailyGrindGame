@@ -8,8 +8,13 @@ namespace Grind
     public class PlayerController : MonoBehaviour
     {
 
+        [SerializeField]
+        private bool controlsEnabled = true;
+
         private MovingCharacter move;
         private JumpingCharacter jump;
+
+        public bool ControlsEnabled { get { return controlsEnabled; } set { controlsEnabled = value; } }
 
         private void Start()
         {
@@ -20,13 +25,16 @@ namespace Grind
         // Update is called once per frame
         void Update()
         {
-            Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
-
-            this.move.Move(moveDirection);
-
-            if(Input.GetButtonDown("Jump"))
+            if (ControlsEnabled)
             {
-                this.jump.Jump();
+                Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
+
+                this.move.Move(moveDirection);
+
+                if (Input.GetButtonDown("Jump"))
+                {
+                    this.jump.Jump();
+                }
             }
         }
     }

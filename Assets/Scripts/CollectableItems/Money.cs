@@ -10,9 +10,16 @@ namespace Grind
         [SerializeField]
         private int worth;
 
+        [SerializeField]
+        private AudioSource collectClip;
+
         protected override void OnCollect()
         {
             Debug.Log(string.Format("Picked up {0} money", worth));
+            if (collectClip != null)
+            {
+                collectClip.Play();
+            }
             StateManager.Instance.AddToFlag("money", worth);
             gameObject.SetActive(false);
         }

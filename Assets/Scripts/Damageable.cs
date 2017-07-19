@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,12 @@ namespace Grind
 
         private Animator anim;
 
+        public int Health { get { return health; } }
+
+        public bool IsDead { get { return isDead; } }
+
+        public event Action Died;
+        
         private void Start()
         {
             this.anim = GetComponent<Animator>();
@@ -54,6 +61,10 @@ namespace Grind
             {
                 this.anim.SetTrigger("die");
                 isDead = true;
+                if (Died != null)
+                {
+                    Died();
+                }
                 Debug.Log(gameObject.name + " is dead");
             }
         }

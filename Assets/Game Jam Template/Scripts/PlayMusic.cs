@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayMusic : MonoBehaviour {
 
-
 	public AudioClip titleMusic;					//Assign Audioclip for title music loop
 	public AudioClip mainMusic;						//Assign Audioclip for main 
 	public AudioMixerSnapshot volumeDown;			//Reference to Audio mixer snapshot in which the master volume of main mixer is turned down
@@ -20,7 +19,7 @@ public class PlayMusic : MonoBehaviour {
 	{
 		//Get a component reference to the AudioSource attached to the UI game object
 		musicSource = GetComponent<AudioSource> ();
-		//Call the PlayLevelMusic function to start playing music
+        //Call the PlayLevelMusic function to start playing music
 	}
 
 
@@ -77,4 +76,9 @@ public class PlayMusic : MonoBehaviour {
 		//call the TransitionTo function of the audioMixerSnapshot volumeDown;
 		volumeDown.TransitionTo (fadeTime);
 	}
+
+    private void OnLevelWasLoaded(int level)
+    {
+        PlayLevelMusic();
+    }
 }

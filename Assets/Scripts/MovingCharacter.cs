@@ -32,6 +32,10 @@ namespace Grind
             {
                 return this.speed;
             }
+            set
+            {
+                this.speed = value;
+            }
         }
 
         private void Start()
