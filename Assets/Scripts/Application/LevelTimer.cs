@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace Grind
     {
         public static LevelTimer instance;
 
+        public static event Action TimeUp; 
+
         [SerializeField]
         private float minutesToComplete = 5;
 
@@ -15,6 +18,8 @@ namespace Grind
         private bool isPaused = false;
 
         private float timeLeft;
+
+        private bool timeUp = false;
 
         public float TimeLeft { get { return timeLeft; } set { timeLeft = value; } }
 
@@ -30,11 +35,23 @@ namespace Grind
 
         void Update()
         {
-            timeLeft -= Time.deltaTime;
-            if (timeLeft < 0)
+            if (timeLeft <= 0)
             {
-                StateManager.Instance.SetFlag("levelTime", timeLeft);
+                if (TimeUp != null && !timeUp)
+                {
+                    timeUp = true;
+                    TimeUp();
+
+                }
+            } else
+            {
+                timeLeft -= Time.deltaTime;
             }
+        }
+
+        public void SubtractTimeLeft(float seconds)
+        {
+            this.timeLeft -= seconds;
         }
     }
 }

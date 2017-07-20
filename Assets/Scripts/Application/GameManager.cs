@@ -32,6 +32,9 @@ namespace Grind
         private void Start()
         {
             Money.MoneyCollected += OnMoneyCollected;
+            Baby.BabyCollected += OnBabyCollected;
+            WinTrigger.LevelWon += OnLevelWon;
+            LevelTimer.TimeUp += OnTimeUp;
         }
 
         private void Update()
@@ -46,26 +49,17 @@ namespace Grind
                     playerDamage.Died += OnPlayerDead;
                 }
             }
-            else
-            {
-                //if (LevelTimer.instance.TimeLeft <= 0)
-                //{
-                //    Debug.LogError("Time is up");
-                //    controller.ControlsEnabled = false;
-                //    StartCoroutine(ScheduleRestart());
-                //}
-            }
         }
 
-        private void OnDestroy()
-        {
-            playerDamage.Died -= OnPlayerDead;
-        }
+        //private void OnDestroy()
+        //{
+        //    playerDamage.Died -= OnPlayerDead;
+        //}
 
-        private void OnDisable()
-        {
-            playerDamage.Died -= OnPlayerDead;
-        }
+        //private void OnDisable()
+        //{
+        //    playerDamage.Died -= OnPlayerDead;
+        //}
 
         #endregion
 
@@ -83,12 +77,31 @@ namespace Grind
             StateManager.Instance.AddToFlag("money", value);
         }
 
+        private void OnBabyCollected(float value)
+        {
+            LevelTimer.instance.SubtractTimeLeft(value);
+        }
+
+        private void OnTimeUp()
+        {
+            Debug.LogError("Times Up!!!");
+            controller.ControlsEnabled = false;
+            StartCoroutine(ScheduleRestart());
+        }
+
+        private void OnLevelWon()
+        {
+            Debug.LogError("Level Won!");
+            StartCoroutine(ScheduleRestart());
+        }
+
         #endregion
 
         IEnumerator ScheduleRestart()
         {
             yield return new WaitForSeconds(5f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StateManager.Instance.SetFlag("money", 0);
         }
     }
 }

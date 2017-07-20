@@ -1221,7 +1221,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4582014438946104, guid: ff82afd846d4bc34ea9b1b3de02ae319, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 169.45795
+      value: 183.59
       objectReference: {fileID: 0}
     - target: {fileID: 4582014438946104, guid: ff82afd846d4bc34ea9b1b3de02ae319, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2355,6 +2355,72 @@ Transform:
   m_PrefabParentObject: {fileID: 4703922964105422, guid: f770eecbdb50c2145930f7650bb24738,
     type: 2}
   m_PrefabInternal: {fileID: 1129878695}
+--- !u!1 &829272821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 829272824}
+  - component: {fileID: 829272823}
+  - component: {fileID: 829272822}
+  m_Layer: 0
+  m_Name: WinTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &829272822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829272821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71be18fd77230484a9dd60660b8114bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &829272823
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829272821}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &829272824
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829272821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 663.7, y: -0.12, z: 0}
+  m_LocalScale: {x: 22.4, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &846513019 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4792499828722594, guid: 28231886d184d1e4491b5446ec7137d8,

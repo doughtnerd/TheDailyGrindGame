@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 222041617652421426}
   - component: {fileID: 114466803390650302}
   - component: {fileID: 114145536908535040}
+  - component: {fileID: 114954101697514080}
   m_Layer: 5
   m_Name: TimeDisplay
   m_TagString: Untagged
@@ -190,6 +191,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114954101697514080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237060281967472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cc3d1c85ed5d240b92483ac68af683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minutesToComplete: 3
+  isPaused: 0
 --- !u!222 &222041617652421426
 CanvasRenderer:
   m_ObjectHideFlags: 1

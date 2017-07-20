@@ -561,8 +561,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114310733876723256, guid: ac982cacf7d3f8b4eac7244abea662e3,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: minutesToComplete
       value: 10
       objectReference: {fileID: 0}

@@ -7,12 +7,21 @@ namespace Grind
 {
     public class Baby : CollectableItem{
 
+        /// <summary>
+        /// Event fired when a baby is collected.
+        /// </summary>
+        public static event Action<float> BabyCollected;
+
         [SerializeField]
-        private float timeToSubtract = 5f;
+        private float secondsToSubtract = 5f;
 
         protected override void OnCollect()
         {
-            Debug.Log(string.Format("Collected baby and removed {0} seconds", timeToSubtract));
+            Debug.Log(string.Format("Collected baby and removed {0} seconds", secondsToSubtract));
+            if (BabyCollected != null)
+            {
+                BabyCollected(secondsToSubtract);
+            }
             gameObject.SetActive(false);
         }
     }
