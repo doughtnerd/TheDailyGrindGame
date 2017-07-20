@@ -7,10 +7,10 @@ namespace Grind
     public class ItemBounce : MonoBehaviour
     {
         [SerializeField]
-        private float frequency = 10f;
+        private float omegaY = 10f;
 
         [SerializeField]
-        private float magnitude = 2f;
+        private float amplitudeY = 2f;
 
         private Vector2 startingPosition;
 
@@ -19,11 +19,12 @@ namespace Grind
             this.startingPosition = transform.position;
         }
 
-        // Update is called once per frame
-        void Update()
+        float index;
+        public void Update()
         {
-            float yDelt = (Mathf.Sin(Time.time * frequency) * magnitude) * Time.deltaTime;
-            transform.position = new Vector2(startingPosition.x, startingPosition.y + yDelt);
+            index += Time.deltaTime;
+            float y = amplitudeY * Mathf.Sin(omegaY * index);
+            transform.position = new Vector3(transform.position.x, y + startingPosition.y, 0);
         }
     }
 }

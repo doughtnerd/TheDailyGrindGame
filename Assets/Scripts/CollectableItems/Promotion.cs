@@ -14,10 +14,12 @@ namespace Grind
 
         protected override void OnCollect()
         {
+            Debug.Log("Collected Promotion!");
             if (PromotionCollected != null)
             {
                 PromotionCollected(multiplier);
             }
+            gameObject.SetActive(false);
         }
     }
 }

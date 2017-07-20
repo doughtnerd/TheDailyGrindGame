@@ -15,6 +15,7 @@ namespace Grind
             {
                 LevelWon();
             }
+            gameObject.SetActive(false);
         }
     }
 }

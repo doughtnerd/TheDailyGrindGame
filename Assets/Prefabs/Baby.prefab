@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfb4777ce5ff3044b65825e29ab45bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToSubtract: 5
+  secondsToSubtract: 5
 --- !u!114 &114949959237590280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,8 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce08b33be68cde64d9e2ca13fa83fbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 10
-  magnitude: 2
+  omegaY: 2
+  amplitudeY: 0.5
 --- !u!212 &212146070146942026
 SpriteRenderer:
   m_ObjectHideFlags: 1

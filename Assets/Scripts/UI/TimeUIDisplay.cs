@@ -19,7 +19,7 @@ namespace Grind
         // Update is called once per frame
         void Update()
         {
-            text.text = Mathf.RoundToInt(LevelTimer.instance.TimeLeft).ToString();
+            text.text = "Time Left: " + Mathf.RoundToInt(LevelTimer.instance.TimeLeft).ToString();
         }
     }
 }

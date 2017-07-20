@@ -8,26 +8,39 @@ namespace Grind
     public class Money : CollectableItem
     {
         public static event Action<int> MoneyCollected;
+        public static event Action<AudioClip> PlaySoundEvent;
 
         [SerializeField]
         private int worth;
 
         [SerializeField]
-        private AudioSource collectClip;
+        private AudioClip collectSound;
 
         protected override void OnCollect()
         {
             Debug.Log(string.Format("Picked up {0} money", worth));
-            if(MoneyCollected!=null)
+            if (MoneyCollected != null)
             {
                 MoneyCollected(worth);
             }
-            if (collectClip != null)
+            if (collectSound != null)
             {
-                collectClip.Play();
+                PlaySoundEvent(collectSound);
             }
-            //StateManager.Instance.AddToFlag("money", worth);
             gameObject.SetActive(false);
         }
+
+        //IEnumerator CollectRoutine()
+        //{
+        //    Debug.Log(string.Format("Picked up {0} money", worth));
+        //    if (MoneyCollected != null)
+        //    {
+        //        MoneyCollected(worth);
+        //    }
+        //    collectSound.Play();
+        //    yield return new WaitForSeconds(collectSound.clip.length);
+        //    gameObject.SetActive(false);
+        //}
+
     }
 }

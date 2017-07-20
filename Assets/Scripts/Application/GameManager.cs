@@ -32,9 +32,11 @@ namespace Grind
         private void Start()
         {
             Money.MoneyCollected += OnMoneyCollected;
+            Money.PlaySoundEvent += OnPlaySound;
             Baby.BabyCollected += OnBabyCollected;
             WinTrigger.LevelWon += OnLevelWon;
             LevelTimer.TimeUp += OnTimeUp;
+            Promotion.PromotionCollected += OnPromotionCollected;
         }
 
         private void Update()
@@ -74,12 +76,19 @@ namespace Grind
 
         private void OnMoneyCollected(int value)
         {
-            StateManager.Instance.AddToFlag("money", value);
+            float multiplier = 0;
+            StateManager.Instance.TryGetFlag("promotions", out multiplier);
+            StateManager.Instance.AddToFlag("money", value * (multiplier + 1));
         }
 
         private void OnBabyCollected(float value)
         {
             LevelTimer.instance.SubtractTimeLeft(value);
+        }
+
+        private void OnPromotionCollected(float multiplier)
+        {
+            StateManager.Instance.AddToFlag("promotions", 1);
         }
 
         private void OnTimeUp()
@@ -95,6 +104,13 @@ namespace Grind
             StartCoroutine(ScheduleRestart());
         }
 
+        private void OnPlaySound(AudioClip clip)
+        {
+            AudioSource source = GetComponent<AudioSource>();
+            source.clip = clip;
+            source.Play();
+        }
+
         #endregion
 
         IEnumerator ScheduleRestart()
@@ -102,6 +118,7 @@ namespace Grind
             yield return new WaitForSeconds(5f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             StateManager.Instance.SetFlag("money", 0);
+            StateManager.Instance.SetFlag("promotions", 0);
         }
     }
 }
