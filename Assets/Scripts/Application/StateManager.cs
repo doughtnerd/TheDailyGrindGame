@@ -27,7 +27,7 @@ namespace Grind
                 Destroy(gameObject);
             }
         }
-           
+
         public void SetFlag(string key, float value)
         {
             if (flags.ContainsKey(key))

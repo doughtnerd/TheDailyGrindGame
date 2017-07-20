@@ -7,6 +7,8 @@ namespace Grind
 {
     public class Money : CollectableItem
     {
+        public static event Action<int> MoneyCollected;
+
         [SerializeField]
         private int worth;
 
@@ -16,11 +18,15 @@ namespace Grind
         protected override void OnCollect()
         {
             Debug.Log(string.Format("Picked up {0} money", worth));
+            if(MoneyCollected!=null)
+            {
+                MoneyCollected(worth);
+            }
             if (collectClip != null)
             {
                 collectClip.Play();
             }
-            StateManager.Instance.AddToFlag("money", worth);
+            //StateManager.Instance.AddToFlag("money", worth);
             gameObject.SetActive(false);
         }
     }

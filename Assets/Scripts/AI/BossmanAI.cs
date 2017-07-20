@@ -16,13 +16,14 @@ namespace Grind
 
         private PatrolBehavior patrol;
         private MovingCharacter move;
-
+        private SpriteRenderer render;
 
         // Use this for initialization
         void Start()
         {
             patrol = GetComponent<PatrolBehavior>();
             move = GetComponent<MovingCharacter>();
+            render = GetComponent<SpriteRenderer>();
         }
 
         // Update is called once per frame
@@ -32,9 +33,11 @@ namespace Grind
             if (hit)
             {
                 move.Speed = 7;
+                render.color = Color.red;
             }  else
             {
                 move.Speed = 3;
+                render.color = Color.white;
             }
             patrol.Behave();
         }

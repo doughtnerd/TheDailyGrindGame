@@ -14,6 +14,8 @@ namespace Grind
         private Damageable playerDamage;
         private PlayerController controller;
 
+        #region Lifecycle Functions
+
         private void Awake()
         {
             if (instance == null)
@@ -27,21 +29,9 @@ namespace Grind
             }
         }
 
-        private void OnDestroy()
+        private void Start()
         {
-            playerDamage.Died -= OnPlayerDead;
-        }
-
-        private void OnDisable()
-        {
-            playerDamage.Died -= OnPlayerDead;
-        }
-
-        private void OnPlayerDead()
-        {
-            Debug.LogError("Player died, scheduling restart...");
-            controller.ControlsEnabled = false;
-            StartCoroutine(ScheduleRestart());
+            Money.MoneyCollected += OnMoneyCollected;
         }
 
         private void Update()
@@ -55,15 +45,9 @@ namespace Grind
                     controller = player.GetComponent<PlayerController>();
                     playerDamage.Died += OnPlayerDead;
                 }
-            } else
+            }
+            else
             {
-                //if (playerDamage.IsDead)
-                //{
-                //    Debug.LogError("Player is dead");
-                //    controller.ControlsEnabled = false;
-                //    StartCoroutine(ScheduleRestart());
-                //}
-
                 //if (LevelTimer.instance.TimeLeft <= 0)
                 //{
                 //    Debug.LogError("Time is up");
@@ -72,6 +56,34 @@ namespace Grind
                 //}
             }
         }
+
+        private void OnDestroy()
+        {
+            playerDamage.Died -= OnPlayerDead;
+        }
+
+        private void OnDisable()
+        {
+            playerDamage.Died -= OnPlayerDead;
+        }
+
+        #endregion
+
+        #region Event Functions
+
+        private void OnPlayerDead()
+        {
+            Debug.LogError("Player died, scheduling restart...");
+            controller.ControlsEnabled = false;
+            StartCoroutine(ScheduleRestart());
+        }
+
+        private void OnMoneyCollected(int value)
+        {
+            StateManager.Instance.AddToFlag("money", value);
+        }
+
+        #endregion
 
         IEnumerator ScheduleRestart()
         {
