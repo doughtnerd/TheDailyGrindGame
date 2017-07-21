@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,16 @@ namespace Grind
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class JumpingCharacter : MonoBehaviour
     {
+        public static event Action<AudioClip> PlaySound;
+
         [SerializeField]
         private float jumpPower = 5f;
 
         [SerializeField]
         private int jumpCount = 2;
+
+        [SerializeField]
+        private AudioClip jumpClip;
 
         //[SerializeField]
         //private string groundLayerName;
@@ -38,6 +44,11 @@ namespace Grind
             if(isGrounded || currentJump < jumpCount)
             {
                 this.isGrounded = false;
+
+                if (PlaySound != null)
+                {
+                    PlaySound(jumpClip);
+                }
 
                 if(this.currentJump == 0)
                 {

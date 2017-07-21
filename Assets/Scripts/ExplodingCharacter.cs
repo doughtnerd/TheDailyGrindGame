@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Grind
 {
     public class ExplodingCharacter : MonoBehaviour
     {
+
+        public static event Action<AudioClip> PlaySound;
 
         [SerializeField]
         private int damage = 1;
@@ -22,6 +25,14 @@ namespace Grind
         [SerializeField]
         private LayerMask damageableLayers;
 
+        [SerializeField]
+        private AudioClip tickingClip;
+
+        [SerializeField]
+        private AudioClip explosionClip;
+
+        private AudioSource source;
+
         private Animator anim;
 
         private bool hasExploded = false;
@@ -30,6 +41,7 @@ namespace Grind
         void Start()
         {
             anim = GetComponent<Animator>();
+            source = GetComponent<AudioSource>();
         }
 
         public void Explode()
@@ -44,8 +56,15 @@ namespace Grind
         IEnumerator ExplodeRoutine()
         {
             anim.SetTrigger("flash");
+            source.clip = tickingClip;
+            source.Play();
             yield return new WaitForSeconds(detonationTime);
+            source.Stop();
             anim.SetTrigger("explode");
+            if (PlaySound != null)
+            {
+                PlaySound(explosionClip);
+            }
             Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, explosionRadius, damageableLayers);
             foreach (Collider2D coll in colls)
             {

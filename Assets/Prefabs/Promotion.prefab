@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
+  promotionClip: {fileID: 8300000, guid: 68e0f68af99795345bf28e70d13fcfc9, type: 3}
 --- !u!212 &212167517535977718
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,8 +113,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -466590063
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2b3d143b675bf3f41beca1f36da9f5ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

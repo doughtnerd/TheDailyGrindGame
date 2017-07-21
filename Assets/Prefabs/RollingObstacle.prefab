@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561e2cd00acdfb642a4a9753e66a3fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 25
+  detectionRadius: 20
   detectableLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240387299819c5647a36e2e080f94a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 6
+  torque: 15
 --- !u!212 &212028722209089994
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -148,8 +148,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -466590063
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b4e5e7b54a3e3e24e94997fd4e42ea90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

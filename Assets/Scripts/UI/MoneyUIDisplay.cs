@@ -22,7 +22,7 @@ namespace Grind
         {
             float val = 0;
             StateManager.Instance.TryGetFlag("money", out val);
-            text.text = string.Format("Money: ${0}", val.ToString());
+            text.text = string.Format("{0}", val.ToString());
         }
     }
 }

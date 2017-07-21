@@ -126,6 +126,7 @@ MonoBehaviour:
   maxHealth: 3
   health: 3
   iFrames: 1.5
+  damageClip: {fileID: 8300000, guid: dfd84feef97a1c64f8e37519683d6530, type: 3}
 --- !u!114 &114619369416182680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 11
   jumpCount: 2
+  jumpClip: {fileID: 8300000, guid: ea54bb734eeff0f46b91cc112fede890, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -197,8 +199,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -202480243
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b37b9e8c91f472f42898f54bcee040e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

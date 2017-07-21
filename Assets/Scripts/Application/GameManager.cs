@@ -32,11 +32,16 @@ namespace Grind
         private void Start()
         {
             Money.MoneyCollected += OnMoneyCollected;
-            Money.PlaySoundEvent += OnPlaySound;
+            Money.PlaySound += OnPlaySound;
             Baby.BabyCollected += OnBabyCollected;
             WinTrigger.LevelWon += OnLevelWon;
             LevelTimer.TimeUp += OnTimeUp;
             Promotion.PromotionCollected += OnPromotionCollected;
+            ExplodingCharacter.PlaySound += OnPlaySound;
+            Damageable.PlaySound += OnPlaySound;
+            JumpingCharacter.PlaySound += OnPlaySound;
+            Promotion.PlaySound += OnPlaySound;
+            Baby.PlaySound += OnPlaySound;
         }
 
         private void Update()
@@ -49,6 +54,7 @@ namespace Grind
                     playerDamage = player.GetComponent<Damageable>();
                     controller = player.GetComponent<PlayerController>();
                     playerDamage.Died += OnPlayerDead;
+                    playerDamage.Damaged += OnPlayerDamaged;
                 }
             }
         }
@@ -66,6 +72,12 @@ namespace Grind
         #endregion
 
         #region Event Functions
+
+        private void OnPlayerDamaged()
+        {
+            HeartUIDisplay.Instance.SetHealth(playerDamage.Health);
+            Debug.Log("Caught player damaged event");
+        }
 
         private void OnPlayerDead()
         {
@@ -107,8 +119,7 @@ namespace Grind
         private void OnPlaySound(AudioClip clip)
         {
             AudioSource source = GetComponent<AudioSource>();
-            source.clip = clip;
-            source.Play();
+            source.PlayOneShot(clip);
         }
 
         #endregion

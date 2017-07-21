@@ -10,6 +10,11 @@ namespace Grind
         [SerializeField]
         private float multiplier = 2f;
 
+        [SerializeField]
+        private AudioClip promotionClip;
+
+        public static event Action<AudioClip> PlaySound;
+
         public static event Action<float> PromotionCollected;
 
         protected override void OnCollect()
@@ -19,6 +24,12 @@ namespace Grind
             {
                 PromotionCollected(multiplier);
             }
+
+            if (PromotionCollected != null)
+            {
+                PlaySound(promotionClip);
+            }
+
             gameObject.SetActive(false);
         }
     }

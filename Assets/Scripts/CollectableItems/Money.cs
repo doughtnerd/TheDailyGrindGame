@@ -8,7 +8,7 @@ namespace Grind
     public class Money : CollectableItem
     {
         public static event Action<int> MoneyCollected;
-        public static event Action<AudioClip> PlaySoundEvent;
+        public static event Action<AudioClip> PlaySound;
 
         [SerializeField]
         private int worth;
@@ -25,7 +25,7 @@ namespace Grind
             }
             if (collectSound != null)
             {
-                PlaySoundEvent(collectSound);
+                PlaySound(collectSound);
             }
             gameObject.SetActive(false);
         }

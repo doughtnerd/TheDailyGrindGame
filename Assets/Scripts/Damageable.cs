@@ -8,6 +8,12 @@ namespace Grind
 {
     public class Damageable : MonoBehaviour
     {
+        public static event Action<AudioClip> PlaySound;
+
+        public event Action Died;
+
+        public event Action Damaged;
+
         [SerializeField]
         private int maxHealth = 3;
 
@@ -16,6 +22,9 @@ namespace Grind
 
         [SerializeField]
         private float iFrames = 1.5f;
+
+        [SerializeField]
+        private AudioClip damageClip;
 
         private float nextDamageTime;
 
@@ -27,8 +36,6 @@ namespace Grind
 
         public bool IsDead { get { return isDead; } }
 
-        public event Action Died;
-        
         private void Start()
         {
             this.anim = GetComponent<Animator>();
@@ -44,6 +51,16 @@ namespace Grind
                     health = health < 0 ? 0 : health;
 
                     this.anim.SetTrigger("damage");
+
+                    if (PlaySound != null)
+                    {
+                        PlaySound(damageClip);
+                    }
+
+                    if (Damaged != null)
+                    {
+                        Damaged();
+                    }
 
                     nextDamageTime = Time.time + iFrames;
 
