@@ -12,7 +12,7 @@ namespace Grind
         public static GameManager Instance { get { return instance; } }
 
         private Damageable playerDamage;
-        private PlayerController controller;
+        private PlayerController playerController;
 
         #region Lifecycle Functions
 
@@ -52,7 +52,7 @@ namespace Grind
                 if (player)
                 {
                     playerDamage = player.GetComponent<Damageable>();
-                    controller = player.GetComponent<PlayerController>();
+                    playerController = player.GetComponent<PlayerController>();
                     playerDamage.Died += OnPlayerDead;
                     playerDamage.Damaged += OnPlayerDamaged;
                 }
@@ -82,7 +82,8 @@ namespace Grind
         private void OnPlayerDead()
         {
             Debug.LogError("Player died, scheduling restart...");
-            controller.ControlsEnabled = false;
+            playerController.ControlsEnabled = false;
+            LoseUIDisplay.Instance.Display(true);
             StartCoroutine(ScheduleRestart());
         }
 
@@ -96,6 +97,8 @@ namespace Grind
         private void OnBabyCollected(float value)
         {
             LevelTimer.instance.SubtractTimeLeft(value);
+            TimeUIDisplay.Instance.Flash();
+            StateManager.Instance.AddToFlag("money", -150);
         }
 
         private void OnPromotionCollected(float multiplier)
@@ -106,13 +109,16 @@ namespace Grind
         private void OnTimeUp()
         {
             Debug.LogError("Times Up!!!");
-            controller.ControlsEnabled = false;
+            TimeUpText.Instance.Display(true);
+            playerController.ControlsEnabled = false;
             StartCoroutine(ScheduleRestart());
         }
 
         private void OnLevelWon()
         {
             Debug.LogError("Level Won!");
+            WinUIDisplay.Instance.Display(true);
+            playerController.ControlsEnabled = false;
             StartCoroutine(ScheduleRestart());
         }
 
@@ -130,6 +136,7 @@ namespace Grind
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             StateManager.Instance.SetFlag("money", 0);
             StateManager.Instance.SetFlag("promotions", 0);
+            //WinUIDisplay.Instance.Display(false);
         }
     }
 }

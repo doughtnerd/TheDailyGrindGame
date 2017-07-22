@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3d4b09a5bac12394a9c1425a2e5b8251
+timeCreated: 1500692998
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Jelly Wobblers
+  fontNames:
+  - Jelly Wobblers
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

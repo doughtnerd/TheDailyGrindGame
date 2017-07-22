@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d54842ec1906c754980c1ec0782461f2
+timeCreated: 1500692998
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BubbleRas
+  fontNames:
+  - BubbleRas
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

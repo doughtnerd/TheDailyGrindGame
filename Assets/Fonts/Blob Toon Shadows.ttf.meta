@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ccfac239a86901c4c8b1c55a47aa7163
+timeCreated: 1500693122
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Blob Toon Shadows
+  fontNames:
+  - Blob Toon Shadows
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

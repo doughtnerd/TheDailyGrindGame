@@ -11,6 +11,9 @@ namespace Grind
 
         private Text text;
 
+        private float currentVal = 0;
+
+
         // Use this for initialization
         void Start()
         {
@@ -22,7 +25,30 @@ namespace Grind
         {
             float val = 0;
             StateManager.Instance.TryGetFlag("money", out val);
+            if(val < currentVal)
+            {
+                StopAllCoroutines();
+                StartCoroutine(FlashRoutine(Color.red, .10f, 5));
+            }
+            if (val > currentVal)
+            {
+                StopAllCoroutines();
+                StartCoroutine(FlashRoutine(Color.green, .10f, 5));
+            }
+            currentVal = val;
             text.text = string.Format("{0}", val.ToString());
+        }
+
+        IEnumerator FlashRoutine(Color color, float interval, int repetitions)
+        {
+            Debug.Log("Running flash routine");
+            for(int i = 0; i < repetitions; i++)
+            {
+                text.color = color;
+                yield return new WaitForSeconds(interval);
+                text.color = Color.black;
+                yield return new WaitForSeconds(interval);
+            }
         }
     }
 }
