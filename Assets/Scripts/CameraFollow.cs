@@ -17,8 +17,8 @@ namespace Grind
         /// <summary>
         /// The camera z-axis offset.
         /// </summary>
-        //[SerializeField]
-        private float offset;
+        [SerializeField]
+        private float yOffset;
 
         /// <summary>
         /// Whether or not to use smooth following.
@@ -54,7 +54,7 @@ namespace Grind
         {
             if (target != null)
             {
-                Vector3 destination = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
+                Vector3 destination = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, transform.position.z);
                 transform.position = smoothFollow ? Vector3.SmoothDamp(transform.position, destination, ref followVelocity, followTime) : destination;
 
             }
