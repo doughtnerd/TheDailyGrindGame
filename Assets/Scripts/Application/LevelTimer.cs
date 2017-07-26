@@ -7,7 +7,7 @@ namespace Grind
 {
     public class LevelTimer : MonoBehaviour
     {
-        public static LevelTimer instance;
+        public static LevelTimer Instance { get; private set; }
 
         public static event Action TimeUp; 
 
@@ -15,7 +15,7 @@ namespace Grind
         private float minutesToComplete = 5;
 
         [SerializeField]
-        private bool isPaused = false;
+        private bool paused = false;
 
         private float timeLeft;
 
@@ -23,9 +23,11 @@ namespace Grind
 
         public float TimeLeft { get { return timeLeft; } set { timeLeft = value; } }
 
+        public bool Paused { get { return paused; } set { paused = value; } }
+
         private void Awake()
         {
-            instance = this;
+            Instance = this;
         }
 
         private void Start()
@@ -35,17 +37,20 @@ namespace Grind
 
         void Update()
         {
-            if (timeLeft <= 0)
+            if (!paused)
             {
-                if (TimeUp != null && !timeUp)
+                if (timeLeft <= 0)
                 {
-                    timeUp = true;
-                    TimeUp();
-
+                    if (TimeUp != null && !timeUp)
+                    {
+                        timeUp = true;
+                        TimeUp();
+                    }
                 }
-            } else
-            {
-                timeLeft -= Time.deltaTime;
+                else
+                {
+                    timeLeft -= Time.deltaTime;
+                }
             }
         }
 

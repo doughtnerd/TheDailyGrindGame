@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,16 +60,13 @@ namespace Grind
             }
         }
 
-        //private void OnDestroy()
-        //{
-        //    playerDamage.Died -= OnPlayerDead;
-        //}
-
-        //private void OnDisable()
-        //{
-        //    playerDamage.Died -= OnPlayerDead;
-        //}
-
+        private void OnLevelWasLoaded(int level)
+        {
+            if (level >= 2)
+            {
+                GetComponent<AudioSource>().Stop();
+            }
+        }
         #endregion
 
         #region Event Functions
@@ -83,6 +81,7 @@ namespace Grind
         {
             Debug.LogError("Player died, scheduling restart...");
             playerController.ControlsEnabled = false;
+            LevelTimer.Instance.Paused = true;
             LoseUIDisplay.Instance.Display(true);
             StartCoroutine(ScheduleRestart());
         }
@@ -96,7 +95,7 @@ namespace Grind
 
         private void OnBabyCollected(float value)
         {
-            LevelTimer.instance.SubtractTimeLeft(value);
+            LevelTimer.Instance.SubtractTimeLeft(value);
             TimeUIDisplay.Instance.Flash();
             StateManager.Instance.AddToFlag("money", -150);
         }
@@ -118,6 +117,7 @@ namespace Grind
         {
             Debug.LogError("Level Won!");
             WinUIDisplay.Instance.Display(true);
+            LevelTimer.Instance.Paused = true;
             playerController.ControlsEnabled = false;
             StartCoroutine(ScheduleRestart());
         }
@@ -137,6 +137,12 @@ namespace Grind
             StateManager.Instance.SetFlag("money", 0);
             StateManager.Instance.SetFlag("promotions", 0);
             //WinUIDisplay.Instance.Display(false);
+        }
+
+        IEnumerator ScheduleAction(float delay, Action action)
+        {
+            yield return new WaitForSeconds(delay);
+            action();
         }
     }
 }

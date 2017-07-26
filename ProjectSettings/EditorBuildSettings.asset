@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0e5c9ef172e0f0b45b04268ef693e262
-  - enabled: 0
-    path: Assets/Scenes/Playground.unity
-    guid: 3e7b2b0ebdc9f864d91200e0125f36d3
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelection.unity
+    guid: a45fef0dfc505094da253a96d01b2419
   - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: 88d4bb153fabb384e94ceeba46992540
+  - enabled: 1
+    path: Assets/Scenes/Level02.unity
+    guid: 6bccda5938eda7e4a8078985d9fcc62e
+  - enabled: 0
+    path: Assets/Scenes/Playground.unity
+    guid: 3e7b2b0ebdc9f864d91200e0125f36d3
