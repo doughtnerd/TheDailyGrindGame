@@ -12,21 +12,21 @@ namespace Grind
         [SerializeField]
         private Dictionary<string, float> flags = new Dictionary<string, float>();
 
-        private static StateManager instance;
-
-        public static StateManager Instance { get { return instance; } }
+        public static StateManager Instance { get; private set; }
 
         private void Awake()
         {
-            if(instance==null)
+            if(Instance == null)
             {
-                instance = this;
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
-            } else if (instance != this)
+            } else if (Instance != this)
             {
                 Destroy(gameObject);
             }
         }
+
+        #region Flag Operations
 
         public void SetFlag(string key, float value)
         {
@@ -55,6 +55,10 @@ namespace Grind
             TryGetFlag(key, out val);
             SetFlag(key, val + amount);
         }
+
+        #endregion
+
+        #region File Operations
 
         public void Save()
         {
@@ -95,5 +99,7 @@ namespace Grind
                 Debug.Log("There is no save game to load");
             }
         }
+
+        #endregion
     }
 }

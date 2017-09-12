@@ -8,9 +8,7 @@ namespace Grind
 {
     public class GameManager : MonoBehaviour
     {
-        private static GameManager instance;
-
-        public static GameManager Instance { get { return instance; } }
+        public static GameManager Instance { get; private set; }
 
         private Damageable playerDamage;
         private PlayerController playerController;
@@ -19,12 +17,12 @@ namespace Grind
 
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-            else if (instance != this)
+            else if (Instance != this)
             {
                 Destroy(gameObject);
             }
@@ -60,13 +58,13 @@ namespace Grind
             }
         }
 
-        private void OnLevelWasLoaded(int level)
-        {
-            if (level >= 2)
-            {
-                GetComponent<AudioSource>().Stop();
-            }
-        }
+        //private void OnLevelWasLoaded(int level)
+        //{
+        //    if (level >= 2)
+        //    {
+        //        GetComponent<AudioSource>().Stop();
+        //    }
+        //}
         #endregion
 
         #region Event Functions
