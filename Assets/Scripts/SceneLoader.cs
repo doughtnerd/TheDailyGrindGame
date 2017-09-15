@@ -7,19 +7,32 @@ namespace Grind
 {
     public class SceneLoader : MonoBehaviour
     {
-
-        [HideInInspector]
-        public Animator animColorFade;                  //Reference to animator which will fade to and from black when starting game.
-
-        [HideInInspector]
-        public Animator animMenuAlpha;                  //Reference to animator that will fade out alpha of MenuPanel canvas group
+        [SerializeField]
+        private Animator animColorFade;
 
         public AnimationClip fadeColorAnimationClip;
 
+        public static SceneLoader Instance { get; private set; }
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         public void LoadScene(int index)
         {
-            animColorFade.SetTrigger("fade");
-            SceneManager.LoadScene(index);
+            StartCoroutine(LoadSceneDelayed(1, index));
+        }
+
+        private IEnumerator LoadSceneDelayed(float delay, int index)
+        {
+            //animColorFade.SetTrigger("fade");
+            //yield return new WaitForSeconds(delay);
+            //SceneManager.LoadSceneAsync(index);
+            StateManager.Instance.SetFlag("money", 0);
+            StateManager.Instance.SetFlag("promotions", 0);
+            LoadingScreenPro.LoadScene(index);
+            yield return null;
         }
     }
 }

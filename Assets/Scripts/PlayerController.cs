@@ -11,8 +11,15 @@ namespace Grind
         [SerializeField]
         private bool controlsEnabled = true;
 
+        [SerializeField]
+        private SimpleTouchController moveController;
+
+        [SerializeField]
+        private SimpleTouchController jumpController;
+
         private MovingCharacter move;
         private JumpingCharacter jump;
+        private Vector2 moveDirection;
 
         public bool ControlsEnabled { get { return controlsEnabled; } set { controlsEnabled = value; } }
 
@@ -20,6 +27,8 @@ namespace Grind
         {
             this.move = GetComponent<MovingCharacter>();
             this.jump = GetComponent<JumpingCharacter>();
+            moveController.TouchEvent += MoveController_TouchEvent;
+            moveController.TouchStateEvent += MoveController_TouchEvent;
         }
 
         // Update is called once per frame
@@ -27,14 +36,31 @@ namespace Grind
         {
             if (ControlsEnabled)
             {
-                Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
-
+#if UNITY_STANDALONE || UNITY_EDITOR
+                moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
+#endif
                 this.move.Move(moveDirection);
 
                 if (Input.GetButtonDown("Jump"))
                 {
                     this.jump.Jump();
                 }
+            } else
+            {
+                moveDirection = Vector2.zero;
+            }
+        }
+
+        void MoveController_TouchEvent(Vector2 value)
+        {
+            this.moveDirection = new Vector2(value.x, 0);
+        }
+
+        void MoveController_TouchEvent(bool touchPresent)
+        {
+            if (!touchPresent)
+            {
+                this.moveDirection = Vector2.zero;
             }
         }
     }

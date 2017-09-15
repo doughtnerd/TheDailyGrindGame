@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/_MainMenu.unity
+    guid: c6a473de83ab37a4ea0ccbc85780c904
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 0e5c9ef172e0f0b45b04268ef693e262
   - enabled: 1
@@ -20,3 +23,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Playground.unity
     guid: 3e7b2b0ebdc9f864d91200e0125f36d3
+  - enabled: 1
+    path: Assets/PS-LoadingScreen/Scenes/PS-LoadingScene_1.unity
+    guid: d06a81ba386ec74409b2a129bf0ec227

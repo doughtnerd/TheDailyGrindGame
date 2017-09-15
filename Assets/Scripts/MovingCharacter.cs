@@ -64,6 +64,12 @@ namespace Grind
             this.transform.position = new Vector3(this.transform.position.x + velocity.x, this.transform.position.y + velocity.y);
         }
 
+        public void MoveHorizontal(int direction)
+        {
+            Vector2 dir = new Vector2(direction, 0);
+            Move(dir);
+        }
+
         private void FixedUpdate()
         {
 

@@ -8,7 +8,7 @@ namespace Grind
     public class HighlightOnHover : MonoBehaviour
     {
         [SerializeField]
-        private string sceneToLoad;
+        private int sceneToLoad;
 
         private SpriteRenderer render;
         private Collider2D coll;
@@ -55,7 +55,7 @@ namespace Grind
                 render.color = Color.white;
                 yield return new WaitForSeconds(interval);
             }
-            SceneManager.LoadScene(sceneToLoad);
+            SceneLoader.Instance.LoadScene(this.sceneToLoad);
         }
     }
 }

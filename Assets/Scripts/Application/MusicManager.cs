@@ -25,8 +25,14 @@ namespace Grind
             }
         }
 
+        public void Stop()
+        {
+            this.musicSource.Stop();
+        }
+
         public void SetClip(AudioClip musicClip)
         {
+            this.musicSource.Stop();
             this.musicSource.clip = musicClip;
         }
 

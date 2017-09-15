@@ -13,6 +13,7 @@ namespace Grind
         private void Awake()
         {
             SceneManager.sceneLoaded += LevelLoadFunction;
+            SceneManager.sceneUnloaded += LevelUnloadFunction;
         }
 
         private void OnDisable()
@@ -24,6 +25,11 @@ namespace Grind
         {
             MusicManager.Instance.SetClip(this.musicClip);
             MusicManager.Instance.Play();
+        }
+
+        private void LevelUnloadFunction(Scene scene)
+        {
+            MusicManager.Instance.Stop();
         }
     }
 }

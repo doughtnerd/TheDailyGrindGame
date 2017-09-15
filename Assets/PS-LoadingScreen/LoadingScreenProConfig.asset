@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad15f6f6fd87d14cbdd4d95807e20c0, type: 3}
+  m_Name: LoadingScreenProConfig
+  m_EditorClassIdentifier: 
+  loadAdditively: 0
+  loadThreadPriority: 0
+  showSceneInfos: 1
+  sceneInfos:
+  - sceneName: TestScene_0
+    imageName: scene_0
+    header: Test Scene 0
+    description: Test Scene 0 is the first of the included test scenes. It's just
+      a simple terrain with a colored light, some balls and a bunch of cubes added
+      to increase loading time.
+  - sceneName: TestScene_1
+    imageName: scene_1
+    header: Test Scene 1
+    description: The second test scene. This is pretty much the same as the other
+      test scene, but with a different perspective on the terrain and a differently
+      colored light. Also there are no spheres added.
+  showRandomTip: 1
+  gameTips:
+  - header: 'Game Tip #1'
+    description: Press "Jump" 2X to perform a double jump
+  - header: 'Game Tip #2'
+    description: Collecting babies will cost you time and money
+  - header: 'Game Tip #3'
+    description: After being hurt, you have a few seconds to recover
+  - header: 'Game Tip #4'
+    description: Collect Promotion Medals to multiply the money you earn
+  - header: 'Game Tip #5'
+    description: The more money you can collect, the better
+  - header: 'Game Tip #6'
+    description: Be wary of water coolers, they can't be trusted
+  - header: 'Game Tip #7'
+    description: Timing both of your jumps is critical to success
+  - header: 'Random Fact #1'
+    description: Being a woman in the workforce is tough
+  - header: 'Random Fact #2'
+    description: Coco is awesome
+  - header: 'Random Fact #3'
+    description: Research shows female leadership receives more hostility from peers
+      than male leadership
+  - header: 'Game Tip #8'
+    description: Bob will explode if you get too close
