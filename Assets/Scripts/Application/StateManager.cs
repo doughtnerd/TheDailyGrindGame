@@ -26,6 +26,12 @@ namespace Grind
             }
         }
 
+        private void Start()
+        {
+            SetFlag("malehighscore", PlayerPrefs.GetFloat("malehighscore"));
+            SetFlag("femalehighscore", PlayerPrefs.GetFloat("femalehighscore"));
+        }
+
         #region Flag Operations
 
         public void SetFlag(string key, float value)
@@ -59,6 +65,11 @@ namespace Grind
         #endregion
 
         #region File Operations
+
+        public void SaveFlag(string flag, float value)
+        {
+            PlayerPrefs.SetFloat(flag, value);
+        }
 
         public void Save()
         {

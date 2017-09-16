@@ -7,13 +7,16 @@ namespace Grind
 {
     public class WinTrigger : CollectableItem
     {
-        public static event Action LevelWon;
+
+        public bool IsFemale;
+
+        public static event Action<bool> LevelWon;
 
         protected override void OnCollect()
         {
             if (LevelWon != null)
             {
-                LevelWon();
+                LevelWon(IsFemale);
             }
             gameObject.SetActive(false);
         }

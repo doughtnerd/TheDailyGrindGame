@@ -81,7 +81,7 @@ namespace Grind
             playerController.ControlsEnabled = false;
             LevelTimer.Instance.Paused = true;
             LoseUIDisplay.Instance.Display(true);
-            StartCoroutine(ScheduleRestart());
+            StartCoroutine(ScheduleRestart(5));
         }
 
         private void OnMoneyCollected(int value)
@@ -108,16 +108,35 @@ namespace Grind
             Debug.LogError("Times Up!!!");
             TimeUpText.Instance.Display(true);
             playerController.ControlsEnabled = false;
-            StartCoroutine(ScheduleRestart());
+            StartCoroutine(ScheduleRestart(5));
         }
 
-        private void OnLevelWon()
+        private void OnLevelWon(bool isFemale)
+        {
+            StartCoroutine(WinRoutine(isFemale));
+        }
+
+        private IEnumerator WinRoutine(bool isFemale)
         {
             Debug.LogError("Level Won!");
             WinUIDisplay.Instance.Display(true);
             LevelTimer.Instance.Paused = true;
             playerController.ControlsEnabled = false;
-            StartCoroutine(ScheduleRestart());
+            yield return new WaitForSeconds(3f);
+            string gender = isFemale ? "female":"male";
+            float money = 0;
+            StateManager.Instance.TryGetFlag("money", out money);
+            float score = + LevelTimer.Instance.TimeLeft + money;
+            float highscore = StateManager.Instance.GetFlag(gender + "highscore");
+            Debug.Log("score: " + score + " highscore: " + highscore);
+            highscore = score > highscore ? score : highscore;
+            StateManager.Instance.SaveFlag(gender + "highscore", highscore);
+
+            ScoreUI.Instance.SetScore((int)score);
+            ScoreUI.Instance.SetHighscore((int)highscore);
+            ScoreUI.Instance.ShowPanel(true);
+
+            StartCoroutine(ScheduleRestart(10));
         }
 
         private void OnPlaySound(AudioClip clip)
@@ -128,9 +147,10 @@ namespace Grind
 
         #endregion
 
-        IEnumerator ScheduleRestart()
+        IEnumerator ScheduleRestart(float time)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(time);
+            ScoreUI.Instance.ShowPanel(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             StateManager.Instance.SetFlag("money", 0);
             StateManager.Instance.SetFlag("promotions", 0);

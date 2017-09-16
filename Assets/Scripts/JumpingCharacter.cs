@@ -71,13 +71,15 @@ namespace Grind
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            //Debug.Log(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer)) == groundLayer.value);
-            //if(collision.gameObject.layer == LayerMask.NameToLayer(groundLayerName))
-            if(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer)) == groundLayer.value)
+            Vector2 collisionDirection = collision.collider.transform.position - gameObject.transform.position;
+            if(collisionDirection.y < 0)
             {
-                this.isGrounded = true;
-                this.anim.SetBool("jumping", false);
-                this.currentJump = 0;
+                if (LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer)) == groundLayer.value)
+                {
+                    this.isGrounded = true;
+                    this.anim.SetBool("jumping", false);
+                    this.currentJump = 0;
+                }
             }
         }
     }
