@@ -33,16 +33,23 @@ namespace Grind
 
         public void SetScore(int score)
         {
-            this.scoreText.text = score + "";
-            if (score + "".CompareTo(this.highscoreText.text) == 1)
-            {
-                this.scoreText.color = Color.green;
-            }
+            StartCoroutine(TextAnimation(this.scoreText, score, score / 50));
         }
 
         public void SetHighscore(int score)
         {
-            this.highscoreText.text = score + "";
+            StartCoroutine(TextAnimation(this.highscoreText, score, score/20));
+        }
+
+        private IEnumerator TextAnimation(Text text, int score, int increment)
+        {
+            int start = 0;
+            while(start < score)
+            {
+                start = start+increment > score ? score:start+increment;
+                yield return new WaitForEndOfFrame();
+                text.text = start + "";
+            }
         }
 
         //private void OnDisable()

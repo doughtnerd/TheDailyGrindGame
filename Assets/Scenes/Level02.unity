@@ -214,11 +214,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1760918051}
-    - target: {fileID: 114641026904204220, guid: 82ae22916e7709f45b10c983826e944e,
+      objectReference: {fileID: 1306366962}
+    - target: {fileID: 114488690749738338, guid: 82ae22916e7709f45b10c983826e944e,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Jump
+      propertyPath: minutesToComplete
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82ae22916e7709f45b10c983826e944e, type: 2}
@@ -3740,6 +3740,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1112058050111534, guid: fd25ba720ffdce048907d897e18ce687,
     type: 2}
   m_PrefabInternal: {fileID: 1760918050}
+--- !u!114 &1306366962 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114653932217030084, guid: fd25ba720ffdce048907d897e18ce687,
+    type: 2}
+  m_PrefabInternal: {fileID: 1760918050}
+  m_Script: {fileID: 11500000, guid: 8377c1a9101107a4aa68c98f485945a5, type: 3}
 --- !u!1 &1314487012
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4226,26 @@ Prefab:
     - target: {fileID: 4792499828722594, guid: 28231886d184d1e4491b5446ec7137d8, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.8532331
+      objectReference: {fileID: 0}
+    - target: {fileID: 61967286611875888, guid: 28231886d184d1e4491b5446ec7137d8,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61967286611875888, guid: 28231886d184d1e4491b5446ec7137d8,
+        type: 2}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61967286611875888, guid: 28231886d184d1e4491b5446ec7137d8,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61967286611875888, guid: 28231886d184d1e4491b5446ec7137d8,
+        type: 2}
+      propertyPath: m_AutoTiling
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28231886d184d1e4491b5446ec7137d8, type: 2}
@@ -5453,12 +5479,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd25ba720ffdce048907d897e18ce687, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1760918051 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114649647239071572, guid: fd25ba720ffdce048907d897e18ce687,
-    type: 2}
-  m_PrefabInternal: {fileID: 1760918050}
-  m_Script: {fileID: 11500000, guid: 73d6fa807cf530148adfc9090aed2419, type: 3}
 --- !u!4 &1775122830 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4703922964105422, guid: f770eecbdb50c2145930f7650bb24738,

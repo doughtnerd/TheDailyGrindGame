@@ -69,6 +69,7 @@ namespace Grind
         public void SaveFlag(string flag, float value)
         {
             PlayerPrefs.SetFloat(flag, value);
+            PlayerPrefs.Save();
         }
 
         public void Save()

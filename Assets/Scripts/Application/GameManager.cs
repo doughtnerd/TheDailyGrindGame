@@ -118,26 +118,36 @@ namespace Grind
 
         private IEnumerator WinRoutine(bool isFemale)
         {
-            Debug.LogError("Level Won!");
-            WinUIDisplay.Instance.Display(true);
             LevelTimer.Instance.Paused = true;
             playerController.ControlsEnabled = false;
+            WinUIDisplay.Instance.Display(true);
+
             yield return new WaitForSeconds(3f);
+            WinUIDisplay.Instance.Display(false);
+
             string gender = isFemale ? "female":"male";
+
             float money = 0;
             StateManager.Instance.TryGetFlag("money", out money);
             float score = + LevelTimer.Instance.TimeLeft + money;
             float highscore = StateManager.Instance.GetFlag(gender + "highscore");
-            Debug.Log("score: " + score + " highscore: " + highscore);
+
             highscore = score > highscore ? score : highscore;
             StateManager.Instance.SaveFlag(gender + "highscore", highscore);
+            StateManager.Instance.SetFlag(gender + "highscore", highscore);
 
-            ScoreUI.Instance.SetScore((int)score);
-            ScoreUI.Instance.SetHighscore((int)highscore);
-            ScoreUI.Instance.ShowPanel(true);
+            SetScoreUI((int)score, (int)highscore);
 
-            StartCoroutine(ScheduleRestart(10));
+            StartCoroutine(ScheduleRestart(8));
         }
+
+        private void SetScoreUI(int score, int highscore)
+        {
+            ScoreUI.Instance.SetScore(score);
+            ScoreUI.Instance.SetHighscore(highscore);
+            ScoreUI.Instance.ShowPanel(true);
+        }
+
 
         private void OnPlaySound(AudioClip clip)
         {

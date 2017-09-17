@@ -10,7 +10,6 @@ namespace Grind
     {
 
         private Text text;
-
         private float currentVal = 0;
 
 
@@ -41,7 +40,6 @@ namespace Grind
 
         IEnumerator FlashRoutine(Color color, float interval, int repetitions)
         {
-            Debug.Log("Running flash routine");
             for(int i = 0; i < repetitions; i++)
             {
                 text.color = color;

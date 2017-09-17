@@ -38,16 +38,25 @@ namespace Grind
             {
 #if UNITY_STANDALONE || UNITY_EDITOR
                 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
-#endif
-                this.move.Move(moveDirection);
 
                 if (Input.GetButtonDown("Jump"))
                 {
                     this.jump.Jump();
                 }
+#endif
+                this.move.Move(moveDirection);
+
             } else
             {
                 moveDirection = Vector2.zero;
+            }
+        }
+
+        public void Jump()
+        {
+            if (controlsEnabled)
+            {
+                this.jump.Jump();
             }
         }
 

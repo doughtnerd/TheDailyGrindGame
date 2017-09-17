@@ -64,14 +64,10 @@ namespace Grind
             }
         }
 
-        private void Update()
-        {
-            
-        }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Vector2 collisionDirection = collision.collider.transform.position - gameObject.transform.position;
+            Vector2 collisionDirection = collision.contacts[0].point -  new Vector2(transform.position.x, transform.position.y);
+            Debug.DrawRay(transform.position, collisionDirection, Color.red, 2);
             if(collisionDirection.y < 0)
             {
                 if (LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer)) == groundLayer.value)

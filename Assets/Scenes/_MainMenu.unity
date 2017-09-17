@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1673,7 +1673,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "This game was made as part of a final project for my gender and sexuality
     class. \nBased on research done during the course, this game seeks to present
-    the topic of gender pay gap and the challenges facing women in the workforce."
+    the topic of gender pay gap and the challenges facing women in the workforce compared
+    to male coworkers."
 --- !u!222 &1220663272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1897,7 +1898,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c4ab40cff2921c447a62be5c89041b53, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
