@@ -5,4 +5,5 @@ A game developed as part of the final output of a Gender & Sexuality research pr
 Was previously released on Android via the Google Play Store (https://play.google.com/store/apps/details?id=com.ChrisCarlson.TheDailyGrind) but is no longer maintained.
 
 Developed in a two-week time period using Unity3D.
-All art & engineering created by myself.
+Character art created by Chris Carlson.
+Engineering & Gameplay Systems created by Chris Carlson.
